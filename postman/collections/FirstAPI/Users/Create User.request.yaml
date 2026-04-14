@@ -1,0 +1,18 @@
+$kind: http-request
+name: Create User
+method: POST
+url: '{{baseUrl}}/users'
+order: 3000
+headers:
+  - key: Content-Type
+    value: application/json
+  - key: Accept
+    value: application/json
+body:
+  type: json
+  content: |-
+    {
+      "name": "Alice",
+      "age": 30
+    }
+description: Create a new user. Provide name and age in the request body.

@@ -1,0 +1,46 @@
+$kind: http-example
+name: 200 OK
+request:
+  url: '{{baseUrl}}/weatherforecast'
+  method: GET
+response:
+  statusCode: 200
+  statusText: OK
+  headers:
+    - key: Content-Type
+      value: application/json
+  body:
+    type: json
+    content: |-
+      [
+        {
+          "date": "2026-04-15",
+          "temperatureC": 22,
+          "temperatureF": 71,
+          "summary": "Warm"
+        },
+        {
+          "date": "2026-04-16",
+          "temperatureC": -5,
+          "temperatureF": 23,
+          "summary": "Freezing"
+        },
+        {
+          "date": "2026-04-17",
+          "temperatureC": 15,
+          "temperatureF": 58,
+          "summary": "Cool"
+        },
+        {
+          "date": "2026-04-18",
+          "temperatureC": 30,
+          "temperatureF": 85,
+          "summary": "Hot"
+        },
+        {
+          "date": "2026-04-19",
+          "temperatureC": 8,
+          "temperatureF": 46,
+          "summary": "Chilly"
+        }
+      ]

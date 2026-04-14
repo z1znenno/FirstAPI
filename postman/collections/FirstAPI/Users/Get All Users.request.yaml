@@ -1,0 +1,9 @@
+$kind: http-request
+name: Get All Users
+method: GET
+url: '{{baseUrl}}/users'
+order: 1000
+headers:
+  - key: Accept
+    value: application/json
+description: Retrieve all users. (Endpoint not yet implemented — placeholder for future development)

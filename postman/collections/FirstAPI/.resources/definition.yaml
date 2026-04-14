@@ -1,0 +1,6 @@
+$kind: collection
+name: FirstAPI
+description: Example requests for the FirstAPI ASP.NET project
+variables:
+  - key: baseUrl
+    value: 'http://localhost:5114'
