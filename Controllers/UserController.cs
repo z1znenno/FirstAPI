@@ -1,8 +1,6 @@
-using FirstApi.Models;
-using FirstApi.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace FirstApi.Controllers
+namespace FirstApi
 {
     [ApiController]
     [Route("api/[controller]")]
