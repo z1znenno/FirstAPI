@@ -1,9 +1,8 @@
 $kind: http-request
 name: Get User by ID
 method: GET
-url: '{{baseUrl}}/users/1'
+url: "{{baseUrl}}/api/user/2"
 order: 2000
 headers:
-  - key: Accept
-    value: application/json
+  Accept: application/json
 description: Retrieve a single user by their ID.

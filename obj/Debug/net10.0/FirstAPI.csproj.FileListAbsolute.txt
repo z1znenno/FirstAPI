@@ -31,3 +31,7 @@ C:\Users\User\CSProjeckts\ASP.NetLearning\FirstAPI\obj\Debug\net10.0\refint\Firs
 C:\Users\User\CSProjeckts\ASP.NetLearning\FirstAPI\obj\Debug\net10.0\FirstAPI.pdb
 C:\Users\User\CSProjeckts\ASP.NetLearning\FirstAPI\obj\Debug\net10.0\FirstAPI.genruntimeconfig.cache
 C:\Users\User\CSProjeckts\ASP.NetLearning\FirstAPI\obj\Debug\net10.0\ref\FirstAPI.dll
+C:\Users\User\CSProjeckts\ASP.NetLearning\FirstAPI\obj\Debug\net10.0\FirstAPI.sourcelink.json
+C:\Users\User\CSProjeckts\ASP.NetLearning\FirstAPI\bin\Debug\net10.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\User\CSProjeckts\ASP.NetLearning\FirstAPI\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\User\CSProjeckts\ASP.NetLearning\FirstAPI\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerUI.dll

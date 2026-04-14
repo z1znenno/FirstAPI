@@ -1,4 +1,6 @@
-namespace UserApi.Models
+using System.Data.Common;
+
+namespace FirstApi
 {
     public class User
     {
