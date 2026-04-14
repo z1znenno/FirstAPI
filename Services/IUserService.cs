@@ -1,4 +1,6 @@
-namespace FirstApi
+using FirstApi.Models;
+
+namespace FirstApi.Services
 {
     public interface IUserService
     {

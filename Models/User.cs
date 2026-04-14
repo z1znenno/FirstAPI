@@ -1,6 +1,6 @@
 using System.Data.Common;
 
-namespace FirstApi
+namespace FirstApi.Models
 {
     public class User
     {
