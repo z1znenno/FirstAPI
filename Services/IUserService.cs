@@ -80,5 +80,5 @@ namespace FirstAPI.Services
         {
             return await _context.Users.Where(x => x.Age >= 18).ToListAsync();
         }
-    }    
+    }       
 }

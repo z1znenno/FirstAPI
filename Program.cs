@@ -9,6 +9,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 builder.Services.AddOpenApi();
 builder.Services.AddControllers();
 builder.Services.AddScoped<IUserService, UserDbService>();
+builder.Services.AddScoped<ITodoService, TodoService>();
 builder.Services.AddDbContext<AppDbContext>
 (
     option => 
