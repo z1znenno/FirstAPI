@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
+using FirstAPI.Models;
+using FirstAPI.Services;
 
-namespace FirstApi
+namespace FirstAPI.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -25,6 +27,10 @@ namespace FirstApi
             return Ok(user);
         }
 
+        [HttpGet("adults")]
+        public async Task<IActionResult> GetAdults() => 
+            Ok(await _userService.GetAdultsAsync());
+            
         [HttpPost]
         public async Task<IActionResult> Add(User user)
         {
@@ -36,7 +42,7 @@ namespace FirstApi
         public async Task<IActionResult> Delete(int id)
         {
             await _userService.DeleteAsync(id);
-            return Ok();
+            return NoContent();
         }
     }
 }

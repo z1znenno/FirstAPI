@@ -1,23 +1,26 @@
 @FirstAPI_HostAddress = http://localhost:5114
 @FirstAPI_UserEndpoint = {{FirstAPI_HostAddress}}/api/user
 
-GET {{FirstAPI_HostAddress}}/weatherforecast/
-Accept: application/json
+GET {{FirstAPI_UserEndpoint}}/
 
 ###
 
-GET {{FirstAPI_HostAddress}}/api/user/2
+GET {{FirstAPI_UserEndpoint}}/1
 
 ###
-POST {{FirstAPI_HostAddress}}/api/user
+POST {{FirstAPI_UserEndpoint}}
 Content-Type: application/json
 
 {
-    "id": 2,
-    "name": "Yarik",
-    "age": 25
+    "id": 5,
+    "name": "Slava",
+    "age": 91
 }
 
 ###
 
-DELETE {{FirstAPI_HostAddress}}/api/user/2
+DELETE {{FirstAPI_UserEndpoint}}/2
+
+###
+
+GET {{FirstAPI_UserEndpoint}}/adults

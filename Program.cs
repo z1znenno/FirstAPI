@@ -1,10 +1,20 @@
-using FirstApi;
+using Microsoft.EntityFrameworkCore;
+using FirstAPI.Services;
+using FirstAPI.Data;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+
 builder.Services.AddOpenApi();
 builder.Services.AddControllers();
-builder.Services.AddSingleton<IUserService, UserService>();
+builder.Services.AddScoped<IUserService, UserDbService>();
+builder.Services.AddDbContext<AppDbContext>
+(
+    option => 
+    option.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
+);
+
 
 var app = builder.Build();
 
