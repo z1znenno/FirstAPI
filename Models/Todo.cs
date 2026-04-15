@@ -3,13 +3,14 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace FirstAPI.Models
 {
-    public class User
+    public class Todo
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public string? Name { get; set; }
-        public int Age { get; set; }
-        public List<Todo>? Todos { get; set; }
+        public string? Title { get; set; }
+        public bool IsCompleted { get; set; }
+        public int UserId { get; set; }
+        public User? User { get; set; }
     }
 }
