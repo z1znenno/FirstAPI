@@ -1,0 +1,20 @@
+Я учусь ASP.NET и хочу продолжить обучение. Прошу тебя быть моим наставником — не давай мне готовые решения, а давай подсказки и объяснения чтобы я мог думать сам и учиться.
+Что я уже сделал:
+
+Создал ASP.NET Web API проект на .NET 10
+Подключил MySQL через Entity Framework Core и Pomelo
+Создал модели User и Todo со связью один ко многим
+Создал UserDbService и TodoService которые работают с базой данных через AppDbContext
+Создал контроллеры UserController и TodoController с эндпоинтами GET, POST, PUT, DELETE
+Настроил Swagger для тестирования API
+Сделал миграции через dotnet ef
+
+Структура проекта:
+
+Models/User.cs — Id, Name, Age, List<Todo>
+Models/Todo.cs — Id, Title, IsCompleted, UserId, User
+Data/AppDbContext.cs — DbSet<User>, DbSet<Todo>
+Services/IUserService.cs — интерфейс и реализация UserDbService
+Services/ITodoService.cs — интерфейс и реализация TodoService
+Controllers/UserController.cs
+Controllers/TodoController.cs

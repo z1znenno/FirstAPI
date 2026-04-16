@@ -1,5 +1,6 @@
 @FirstAPI_HostAddress = http://localhost:5114
 @FirstAPI_UserEndpoint = {{FirstAPI_HostAddress}}/api/user
+@FirstAPI_TodoEndpoint = {{FirstAPI_HostAddress}}/api/todo
 
 GET {{FirstAPI_UserEndpoint}}/
 
@@ -24,3 +25,30 @@ DELETE {{FirstAPI_UserEndpoint}}/2
 ###
 
 GET {{FirstAPI_UserEndpoint}}/adults
+
+###
+
+# Todo Requests
+
+GET {{FirstAPI_TodoEndpoint}}/1
+
+###
+
+POST {{FirstAPI_TodoEndpoint}}
+Content-Type: application/json
+
+{
+    "title": "Learn ASP.NET",
+    "isCompleted": false,
+    "userId": 1
+}
+
+###
+
+PUT {{FirstAPI_TodoEndpoint}}/1
+
+###
+
+DELETE {{FirstAPI_TodoEndpoint}}/1
+
+###

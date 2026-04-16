@@ -6,7 +6,7 @@ namespace FirstAPI.Services
 {
     public interface ITodoService
     {
-        Task<List<Todo>>? GetAllTodosAsync(int userId);
+        Task<List<Todo>> GetAllTodosAsync(int userId);
         Task AddTodoAsync(Todo todo);
         Task DeleteTodoAsync(int id);
         Task MakeCompleteAsync(int id);
@@ -21,7 +21,7 @@ namespace FirstAPI.Services
             _context = context;
         }
 
-        public async Task<List<Todo>>? GetAllTodosAsync(int userId)
+        public async Task<List<Todo>> GetAllTodosAsync(int userId)
         {
             return await _context.Todos.Where(x => x.UserId == userId).ToListAsync();
         }
