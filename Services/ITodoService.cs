@@ -9,7 +9,7 @@ namespace FirstAPI.Services
         Task<List<Todo>> GetAllTodosAsync(int userId);
         Task AddTodoAsync(Todo todo);
         Task DeleteTodoAsync(int id);
-        Task MakeCompleteAsync(int id);
+        Task MakeCompleteAsync(int id, bool IsCompleted);
     }
 
     public class TodoService : ITodoService
@@ -36,10 +36,10 @@ namespace FirstAPI.Services
             if (todo != null) _context.Todos.Remove(todo);
             await _context.SaveChangesAsync();
         }
-        public async Task MakeCompleteAsync(int id)
+        public async Task MakeCompleteAsync(int id, bool IsCompleted)
         {
             var todo = await _context.Todos.FirstOrDefaultAsync(x => x.Id == id);
-            if(todo != null) todo.IsCompleted = true;
+            if(todo != null) todo.IsCompleted = IsCompleted;
             await _context.SaveChangesAsync();
         }
     }

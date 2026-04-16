@@ -31,10 +31,10 @@ namespace FirstAPI.Controllers
             return CreatedAtAction(nameof(GetTodos), new { id = todo.Id }, todo);
         }
 
-        [HttpPut("{id}")]
-        public async Task<IActionResult> MakeComplete(int id)
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> MakeComplete(int id, bool IsComplete)
         {
-            await _todoService.MakeCompleteAsync(id);
+            await _todoService.MakeCompleteAsync(id, IsComplete);
             return Ok();
         }
 
