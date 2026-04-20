@@ -13,14 +13,13 @@ POST {{FirstAPI_UserEndpoint}}
 Content-Type: application/json
 
 {
-    "id": 5,
-    "name": "Slava",
-    "age": 91
+    "name": "Yarik",
+    "age": 12
 }
 
 ###
 
-DELETE {{FirstAPI_UserEndpoint}}/2
+DELETE {{FirstAPI_UserEndpoint}}/3
 
 ###
 
@@ -30,7 +29,7 @@ GET {{FirstAPI_UserEndpoint}}/adults
 
 # Todo Requests
 
-GET {{FirstAPI_TodoEndpoint}}/1
+GET {{FirstAPI_TodoEndpoint}}/3
 
 ###
 
@@ -38,14 +37,14 @@ POST {{FirstAPI_TodoEndpoint}}
 Content-Type: application/json
 
 {
-    "title": "Learn ASP.NET",
+    "title": "Buy milk",
     "isCompleted": false,
-    "userId": 1
+    "userId": 3
 }
 
 ###
 
-PUT {{FirstAPI_TodoEndpoint}}/1
+PATCH  {{FirstAPI_TodoEndpoint}}/2?IsComplete=true
 
 ###
 

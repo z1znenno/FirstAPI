@@ -16,10 +16,9 @@ namespace FirstAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetTodos(int id)
+        public async Task<IActionResult> GetUserTodos(int id)
         {
-
-            var Todos = await _todoService.GetAllTodosAsync(id);
+            var Todos = await _todoService.GetAllUserTodosAsync(id);
             if (Todos == null) return NotFound();
             return Ok(Todos);
         }
@@ -28,7 +27,7 @@ namespace FirstAPI.Controllers
         public async Task<IActionResult> AddTodo(Todo todo)
         {
             await _todoService.AddTodoAsync(todo);
-            return CreatedAtAction(nameof(GetTodos), new { id = todo.Id }, todo);
+            return CreatedAtAction(nameof(GetUserTodos), new { id = todo.Id }, todo);
         }
 
         [HttpPatch("{id}")]

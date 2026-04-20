@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using FirstAPI.Models;
 using FirstAPI.Services;
+using FirstAPI.DTOs;
 
 namespace FirstAPI.Controllers
 {
@@ -32,10 +33,10 @@ namespace FirstAPI.Controllers
             Ok(await _userService.GetAdultsAsync());
             
         [HttpPost]
-        public async Task<IActionResult> Add(User user)
+        public async Task<IActionResult> Add(CreateUserDto user)
         {
             await _userService.AddAsync(user);
-            return CreatedAtAction(nameof(GetById), new { id = user.Id }, user);
+            return CreatedAtAction(nameof(GetById), new { id = user.Name }, user);
         }
 
         [HttpDelete("{id}")]
@@ -43,6 +44,13 @@ namespace FirstAPI.Controllers
         {
             await _userService.DeleteAsync(id);
             return NoContent();
+        }
+
+        [HttpPatch("{id}")]
+        public async Task<IActionResult> Change(int id, string name, int age)
+        {
+            await _userService.ChangeUserData(id, name, age);
+            return Ok();
         }
     }
 }
