@@ -42,10 +42,17 @@ namespace FirstAPI.Services
             //     Todos = todos
             // };
         }
-        public async Task AddTodoAsync(Todo todo)
+        public async Task<Todo> AddTodoAsync(CreateTodoDto todo)
         {
-            await _context.Todos.AddAsync(todo);
+            var entity = new Todo()
+            {
+                Title = todo.Title,
+                UserId = todo.UserId,
+                IsCompleted = false
+            };
+            await _context.Todos.AddAsync(entity);
             await _context.SaveChangesAsync();
+            return entity;
         }
         public async Task DeleteTodoAsync(int id)
         {

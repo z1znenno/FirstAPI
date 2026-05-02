@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using FirstAPI.Models;
 using FirstAPI.Services;
+using FirstAPI.DTOs;
 
 namespace FirstAPI.Controllers
 {
@@ -24,10 +25,10 @@ namespace FirstAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddTodo(Todo todo)
+        public async Task<IActionResult> AddTodo(CreateTodoDto todo)
         {
-            await _todoService.AddTodoAsync(todo);
-            return CreatedAtAction(nameof(GetUserTodos), new { id = todo.Id }, todo);
+            var createdTodo = await _todoService.AddTodoAsync(todo);
+            return Ok(createdTodo);
         }
 
         [HttpPatch("{id}")]
