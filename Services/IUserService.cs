@@ -7,11 +7,9 @@ namespace FirstAPI.Services
 {
     public interface IUserService
     {
-        Task<List<User>> GetAllAsync();
         Task<User?> GetByIdAsync(int id);
-        Task AddAsync(CreateUserDto user);
+        Task<CreateUserDto> AddAsync(CreateUserDto user);
         Task DeleteAsync(int id);
-        Task<List<User>> GetAdultsAsync();
         Task ChangeUserData(int id, string name, int age);
     }
 }

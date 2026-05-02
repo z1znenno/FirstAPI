@@ -16,10 +16,6 @@ namespace FirstAPI.Controllers
             _userService = userService;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetAll() =>
-            Ok(await _userService.GetAllAsync());
-
         [HttpGet("{id}")]
         public async Task<IActionResult> GetById(int id)
         {
@@ -27,16 +23,12 @@ namespace FirstAPI.Controllers
             if (user == null) return NotFound();
             return Ok(user);
         }
-
-        [HttpGet("adults")]
-        public async Task<IActionResult> GetAdults() => 
-            Ok(await _userService.GetAdultsAsync());
-            
+  
         [HttpPost]
         public async Task<IActionResult> Add(CreateUserDto user)
         {
-            await _userService.AddAsync(user);
-            return CreatedAtAction(nameof(GetById), new { id = user.Name }, user);
+            var createdUser = await _userService.AddAsync(user);
+            return Ok(createdUser);
         }
 
         [HttpDelete("{id}")]

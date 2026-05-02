@@ -13,15 +13,12 @@ namespace FirstAPI.Services
             _context = context;
         }
 
-        public async Task<List<User>> GetAllAsync() =>
-            await _context.Users.ToListAsync ();
-        
         public async Task<User?> GetByIdAsync(int id)
         {
             var user = await _context.Users.FirstOrDefaultAsync(x => id == x.Id);
             return user;
         }
-        public async Task AddAsync(CreateUserDto user)
+        public async Task<CreateUserDto> AddAsync(CreateUserDto user)
         {
             await _context.Users.AddAsync(new User()
             {
@@ -29,16 +26,13 @@ namespace FirstAPI.Services
                 Age = user.Age
             });
             await _context.SaveChangesAsync();
+            return user;
         }
         public async Task DeleteAsync(int id)
         {
             var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == id);
             if (user != null) _context.Users.Remove(user);
             await _context.SaveChangesAsync();
-        }
-        public async Task<List<User>> GetAdultsAsync()
-        {
-            return await _context.Users.Where(x => x.Age >= 18).ToListAsync();
         }
 
         public async Task ChangeUserData(int Id, string name, int age)
