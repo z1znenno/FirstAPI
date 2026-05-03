@@ -10,15 +10,19 @@ namespace FirstAPI.Controllers
     public class TodoController : ControllerBase
     {
         private readonly ITodoService _todoService;
+        private readonly ILogger<TodoController> _logger;
 
-        public TodoController(ITodoService service)
+        public TodoController(ITodoService service, ILogger<TodoController> logger)
         {
             _todoService = service;
+            _logger = logger;
         }
 
         [HttpGet("{id}")]
         public async Task<IActionResult> GetUserTodos(int id)
         {
+            _logger.LogInformation("Getting all user todos...");
+            throw new Exception("Test");
             var Todos = await _todoService.GetAllUserTodosAsync(id);
             if (Todos == null) return NotFound();
             return Ok(Todos);
@@ -27,6 +31,7 @@ namespace FirstAPI.Controllers
         [HttpPost]
         public async Task<IActionResult> AddTodo(CreateTodoDto todo)
         {
+            _logger.LogInformation("Adding new todo");
             var createdTodo = await _todoService.AddTodoAsync(todo);
             return Ok(createdTodo);
         }

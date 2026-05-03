@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using FirstAPI.Services;
 using FirstAPI.Data;
+using FirstAPI.Middleware;
+using FirstAPI.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +10,7 @@ var connectionString = builder.Configuration.GetConnectionString("DefaultConnect
 
 builder.Services.AddOpenApi();
 builder.Services.AddControllers();
+
 builder.Services.AddScoped<IUserService, UserDbService>();
 builder.Services.AddScoped<ITodoService, TodoService>();
 builder.Services.AddDbContext<AppDbContext>
@@ -15,7 +18,6 @@ builder.Services.AddDbContext<AppDbContext>
     option => 
     option.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
 );
-
 
 var app = builder.Build();
 
@@ -28,6 +30,7 @@ if (app.Environment.IsDevelopment())
     });
 }
 
+app.UseMiddleware<ExceptionMiddleware>();
 app.UseHttpsRedirection();
 app.MapControllers();
 app.Run();

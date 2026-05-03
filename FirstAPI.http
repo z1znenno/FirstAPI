@@ -29,7 +29,7 @@ GET {{FirstAPI_UserEndpoint}}/adults
 
 # Todo Requests
 
-GET {{FirstAPI_TodoEndpoint}}/3
+GET {{FirstAPI_TodoEndpoint}}/1
 
 ###
 
