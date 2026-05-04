@@ -2,7 +2,7 @@ namespace FirstAPI.DTOs
 {
     public class UserTodosDto
     {
-        public string UserName{ get; set; }
+        public string? UserName{ get; set; }
         public List<TodoDto> Todos { get; set; } = new List<TodoDto>();
     }
 }

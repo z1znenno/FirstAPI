@@ -1,7 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using FirstAPI.Models;
-using FirstAPI.Services;
-using FirstAPI.DTOs;
+using FirstAPI.Services.Interfaces;
 
 namespace FirstAPI.Controllers
 {
@@ -22,13 +20,6 @@ namespace FirstAPI.Controllers
             var user = await _userService.GetByIdAsync(id);
             if (user == null) return NotFound();
             return Ok(user);
-        }
-  
-        [HttpPost]
-        public async Task<IActionResult> Add(CreateUserDto user)
-        {
-            var createdUser = await _userService.AddAsync(user);
-            return Ok(createdUser);
         }
 
         [HttpDelete("{id}")]

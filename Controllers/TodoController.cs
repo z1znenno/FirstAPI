@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using FirstAPI.Models;
-using FirstAPI.Services;
+using FirstAPI.Services.Interfaces;
 using FirstAPI.DTOs;
+
 
 namespace FirstAPI.Controllers
 {
@@ -22,9 +22,7 @@ namespace FirstAPI.Controllers
         public async Task<IActionResult> GetUserTodos(int id)
         {
             _logger.LogInformation("Getting all user todos...");
-            throw new Exception("Test");
             var Todos = await _todoService.GetAllUserTodosAsync(id);
-            if (Todos == null) return NotFound();
             return Ok(Todos);
         }
 
