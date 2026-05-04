@@ -1,5 +1,6 @@
 using System.Text.Json;
 using FirstAPI.Models.Responses;
+using FirstAPI.Models.Exceptions;
 
 namespace FirstAPI.Middleware
 {
@@ -19,15 +20,23 @@ namespace FirstAPI.Middleware
             {
                 await _next(context);
             }
+            catch(NotFoundException ex)
+            {
+                await ExceptionHandlerAsync(context, 404, ex.Message);
+            }
             catch(Exception ex)
             {
-                _logger.LogError(ex, "Something went wrong!");
-                context.Response.StatusCode = 500;
-                context.Response.ContentType = "application/json";
-                ErrorResponse response = new ErrorResponse(500, "Bye world!((");
-                string json = JsonSerializer.Serialize(response);
-                await context.Response.WriteAsync(json);
+                await ExceptionHandlerAsync(context, 500, ex.Message);
             }
+        }
+        public async Task ExceptionHandlerAsync(HttpContext context, int StatusCode, string Message)
+        {
+            _logger.LogError($"Something went wrong: {Message}");
+            context.Response.StatusCode = StatusCode;
+            context.Response.ContentType = "application/json";
+            ErrorResponse errorResponse = new ErrorResponse(StatusCode, Message);
+            string json = JsonSerializer.Serialize(errorResponse);
+            await context.Response.WriteAsync(json);
         }
     }
 }
