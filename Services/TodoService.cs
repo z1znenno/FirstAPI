@@ -2,6 +2,8 @@ using FirstAPI.DTOs;
 using FirstAPI.Models;
 using FirstAPI.Data;
 using Microsoft.EntityFrameworkCore;
+using FirstAPI.Models.Exceptions;
+using FirstAPI.Services.Interfaces;
 
 namespace FirstAPI.Services
 {
@@ -29,7 +31,7 @@ namespace FirstAPI.Services
             ).FirstOrDefaultAsync();
             
             // var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == userId);
-            // if (user == null) return null; 
+            // if (user == null) throw new NotFoundException("User not found"); 
             // var todos = await _context.Todos.Where(x => x.UserId == userId).Select(t => new TodoDto
             // ()
             // {
@@ -57,13 +59,15 @@ namespace FirstAPI.Services
         public async Task DeleteTodoAsync(int id)
         {
             var todo = await _context.Todos.FirstOrDefaultAsync(x => x.Id == id);
-            if (todo != null) _context.Todos.Remove(todo);
+            if (todo == null) throw new NotFoundException("Todo not found");
+            _context.Todos.Remove(todo);
             await _context.SaveChangesAsync();
         }
         public async Task MakeCompleteAsync(int id, bool IsCompleted)
         {
             var todo = await _context.Todos.FirstOrDefaultAsync(x => x.Id == id);
-            if(todo != null) todo.IsCompleted = IsCompleted;
+            if(todo == null) throw new NotFoundException("Todo not found");
+            todo.IsCompleted = IsCompleted;
             await _context.SaveChangesAsync();
         }
     }

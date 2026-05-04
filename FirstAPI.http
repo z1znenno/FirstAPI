@@ -6,7 +6,7 @@ GET {{FirstAPI_UserEndpoint}}/
 
 ###
 
-GET {{FirstAPI_UserEndpoint}}/1
+GET {{FirstAPI_UserEndpoint}}/3
 
 ###
 POST {{FirstAPI_UserEndpoint}}
@@ -23,13 +23,11 @@ DELETE {{FirstAPI_UserEndpoint}}/3
 
 ###
 
-GET {{FirstAPI_UserEndpoint}}/adults
-
 ###
 
 # Todo Requests
 
-GET {{FirstAPI_TodoEndpoint}}/1
+GET {{FirstAPI_TodoEndpoint}}/3
 
 ###
 

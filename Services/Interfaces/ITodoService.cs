@@ -1,13 +1,11 @@
 using FirstAPI.Models;
-using FirstAPI.Data;
-using Microsoft.EntityFrameworkCore;
 using FirstAPI.DTOs;
 
-namespace FirstAPI.Services
+namespace FirstAPI.Services.Interfaces
 {
     public interface ITodoService
     {
-        Task<UserTodosDto> GetAllUserTodosAsync(int userId);
+        Task<UserTodosDto?> GetAllUserTodosAsync(int userId);
         Task<Todo> AddTodoAsync(CreateTodoDto todo);
         Task DeleteTodoAsync(int id);
         Task MakeCompleteAsync(int id, bool IsCompleted);
