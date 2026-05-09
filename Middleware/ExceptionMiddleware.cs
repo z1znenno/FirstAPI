@@ -24,6 +24,10 @@ namespace FirstAPI.Middleware
             {
                 await ExceptionHandlerAsync(context, 404, ex.Message);
             }
+            catch (AuthorizeException ex)
+            {
+                await ExceptionHandlerAsync(context, 401, ex.Message);
+            }
             catch(Exception ex)
             {
                 await ExceptionHandlerAsync(context, 500, ex.Message);

@@ -1,9 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 using FirstAPI.Services.Interfaces;
+using FirstAPI.DTOs.Responses;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace FirstAPI.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("api/[controller]")]
     public class UserController : ControllerBase
     {
@@ -14,25 +18,27 @@ namespace FirstAPI.Controllers
             _userService = userService;
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetById(int id)
+        [HttpGet]
+        public async Task<IActionResult> GetById()
         {
-            var user = await _userService.GetByIdAsync(id);
-            if (user == null) return NotFound();
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value!);
+            var user = await _userService.GetByIdAsync(userId);
             return Ok(user);
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete(int id)
+        [HttpDelete]
+        public async Task<IActionResult> Delete()
         {
-            await _userService.DeleteAsync(id);
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value!);
+            await _userService.DeleteAsync(userId);
             return NoContent();
         }
 
-        [HttpPatch("{id}")]
-        public async Task<IActionResult> Change(int id, string name, int age)
+        [HttpPatch]
+        public async Task<IActionResult> Change(string name, int age, string login)
         {
-            await _userService.ChangeUserData(id, name, age);
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value!);
+            await _userService.ChangeUserData(userId, name, age, login);
             return Ok();
         }
     }

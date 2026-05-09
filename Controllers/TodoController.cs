@@ -1,11 +1,14 @@
 using Microsoft.AspNetCore.Mvc;
 using FirstAPI.Services.Interfaces;
-using FirstAPI.DTOs;
+using FirstAPI.DTOs.Requests;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 
 namespace FirstAPI.Controllers
 {
     [ApiController]
+    [Authorize]
     [Route("api/[controller]")]
     public class TodoController : ControllerBase
     {
@@ -18,11 +21,12 @@ namespace FirstAPI.Controllers
             _logger = logger;
         }
 
-        [HttpGet("{id}")]
-        public async Task<IActionResult> GetUserTodos(int id)
+        [HttpGet]
+        public async Task<IActionResult> GetUserTodos()
         {
             _logger.LogInformation("Getting all user todos...");
-            var Todos = await _todoService.GetAllUserTodosAsync(id);
+            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value!);
+            var Todos = await _todoService.GetAllUserTodosAsync(userId);
             return Ok(Todos);
         }
 
@@ -34,17 +38,17 @@ namespace FirstAPI.Controllers
             return Ok(createdTodo);
         }
 
-        [HttpPatch("{id}")]
-        public async Task<IActionResult> MakeComplete(int id, bool IsComplete)
+        [HttpPatch]
+        public async Task<IActionResult> MakeComplete(int todoId, bool IsComplete)
         {
-            await _todoService.MakeCompleteAsync(id, IsComplete);
+            await _todoService.MakeCompleteAsync(todoId, IsComplete);
             return Ok();
         }
 
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTodo(int id)
+        [HttpDelete]
+        public async Task<IActionResult> DeleteTodo(int todoId)
         {
-            await _todoService.DeleteTodoAsync(id);
+            await _todoService.DeleteTodoAsync(todoId);
             return NoContent();
         }
     }
