@@ -18,10 +18,15 @@ namespace FirstAPI.Controllers
             _userService = userService;
         }
 
+        private int GetUserId()
+        {
+            return int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value!);
+        }
+
         [HttpGet]
         public async Task<IActionResult> GetById()
         {
-            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value!);
+            var userId = GetUserId();
             var user = await _userService.GetByIdAsync(userId);
             return Ok(user);
         }
@@ -29,7 +34,7 @@ namespace FirstAPI.Controllers
         [HttpDelete]
         public async Task<IActionResult> Delete()
         {
-            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value!);
+            var userId = GetUserId();
             await _userService.DeleteAsync(userId);
             return NoContent();
         }
@@ -37,7 +42,7 @@ namespace FirstAPI.Controllers
         [HttpPatch]
         public async Task<IActionResult> Change(string name, int age, string login)
         {
-            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value!);
+            var userId = GetUserId();
             await _userService.ChangeUserData(userId, name, age, login);
             return Ok();
         }

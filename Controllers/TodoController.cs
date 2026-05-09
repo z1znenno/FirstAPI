@@ -21,11 +21,16 @@ namespace FirstAPI.Controllers
             _logger = logger;
         }
 
+        public int GetUserId()
+        {
+            return int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value!);
+        }
+
         [HttpGet]
         public async Task<IActionResult> GetUserTodos()
         {
             _logger.LogInformation("Getting all user todos...");
-            var userId = int.Parse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value!);
+            var userId = GetUserId();
             var Todos = await _todoService.GetAllUserTodosAsync(userId);
             return Ok(Todos);
         }
