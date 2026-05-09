@@ -9,6 +9,6 @@ namespace FirstAPI.Services.Interfaces
         Task<UserDto> GetByLoginAsync(string login);
         Task<UserDto> AddAsync(CreateUserDto user);
         Task DeleteAsync(int id);
-        Task ChangeUserData(int id, string name, int age, string login);
+        Task ChangeUserData(ChangeUser user, int id);
     }
 }

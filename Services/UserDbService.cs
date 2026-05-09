@@ -82,13 +82,13 @@ namespace FirstAPI.Services
             await _context.SaveChangesAsync();
         }
 
-        public async Task ChangeUserData(int Id, string name, int age, string login)
+        public async Task ChangeUserData(ChangeUser changeUser, int id)
         {
-            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == Id);
+            var user = await _context.Users.FirstOrDefaultAsync(u => u.Id == id);
             if(user == null) throw new NotFoundException("User not found");
-            user.Name = name;
-            user.Age = age;
-            user.Login = login;
+            user.Name = changeUser.Name;
+            user.Age = changeUser.Age;
+            user.Login = changeUser.Login;
             await _context.SaveChangesAsync();
         }
     }       

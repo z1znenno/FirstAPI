@@ -3,6 +3,7 @@ using FirstAPI.Services.Interfaces;
 using FirstAPI.DTOs.Responses;
 using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
+using FirstAPI.DTOs.Requests;
 
 namespace FirstAPI.Controllers
 {
@@ -40,10 +41,10 @@ namespace FirstAPI.Controllers
         }
 
         [HttpPatch]
-        public async Task<IActionResult> Change(string name, int age, string login)
+        public async Task<IActionResult> Change(ChangeUser user)
         {
             var userId = GetUserId();
-            await _userService.ChangeUserData(userId, name, age, login);
+            await _userService.ChangeUserData(user, userId);
             return Ok();
         }
     }
