@@ -5,7 +5,7 @@ namespace FirstAPI.DTOs.Requests
 {
     public class CreateTodoDto
     {
-        [MaxLength(50)]
+        [MaxLength(1000)]
         [Required]
         public string? Title { get; set; }
         public bool IsCompleted { get; set; } = false;
