@@ -9,7 +9,5 @@ namespace FirstAPI.DTOs.Requests
         [Required]
         public string? Title { get; set; }
         public bool IsCompleted { get; set; } = false;
-        [Required]
-        public int UserId { get; set; }
     }
 }

@@ -39,18 +39,20 @@ namespace FirstAPI.Controllers
         public async Task<IActionResult> AddTodo(CreateTodoDto todo)
         {
             _logger.LogInformation("Adding new todo");
-            var createdTodo = await _todoService.AddTodoAsync(todo);
+            var userId = GetUserId();
+            var createdTodo = await _todoService.AddTodoAsync(todo, userId);
             return Ok(createdTodo);
         }
 
-        [HttpPatch]
+        [HttpPatch("{todoId}")]
         public async Task<IActionResult> MakeComplete(int todoId, bool IsComplete)
         {
-            await _todoService.MakeCompleteAsync(todoId, IsComplete);
+            var userId = GetUserId();
+            await _todoService.MakeCompleteAsync(todoId, userId, IsComplete);
             return Ok();
         }
 
-        [HttpDelete]
+        [HttpDelete("{todoId}")]
         public async Task<IActionResult> DeleteTodo(int todoId)
         {
             await _todoService.DeleteTodoAsync(todoId);

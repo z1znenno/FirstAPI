@@ -1,11 +1,11 @@
 $kind: http-request
 name: Complete Todo
 method: PATCH
-url: '{{baseUrl}}/api/todo/{{todoId}}?IsComplete=true'
+url: "{{baseUrl}}/api/todo/{{todoId}}?IsComplete=true"
+queryParams:
+  IsComplete: "true"
 order: 3000
 headers:
-  - key: Accept
-    value: application/json
-  - key: Authorization
-    value: 'Bearer {{token}}'
+  Accept: application/json
+  Authorization: Bearer {{token}}
 description: Mark a todo as complete or incomplete by its ID.

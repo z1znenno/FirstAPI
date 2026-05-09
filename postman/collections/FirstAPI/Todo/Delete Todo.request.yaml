@@ -1,9 +1,8 @@
 $kind: http-request
 name: Delete Todo
 method: DELETE
-url: '{{baseUrl}}/api/todo/{{todoId}}'
+url: "{{baseUrl}}/api/todo/{{todoId}}"
 order: 4000
 headers:
-  - key: Authorization
-    value: 'Bearer {{token}}'
+  Authorization: Bearer {{token}}
 description: Delete a todo item by its ID.

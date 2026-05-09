@@ -1,4 +1,5 @@
 $kind: http-request
+name: Login
 method: POST
 url: "{{baseUrl}}/api/auth/login"
 order: 1000
@@ -9,7 +10,7 @@ body:
   type: json
   content: |-
     {
-      "login": "your_login",
-      "password": "your_password"
+      "login": "login",
+      "password": "password"
     }
 description: Authenticate a user and receive a JWT token.

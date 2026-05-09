@@ -46,17 +46,18 @@ namespace FirstAPI.Services
             //     Todos = todos
             // };
         }
-        public async Task<Todo> AddTodoAsync(CreateTodoDto todo)
+        public async Task<TodoDto> AddTodoAsync(CreateTodoDto createTodo, int userId)
         {
             var entity = new Todo()
             {
-                Title = todo.Title,
-                UserId = todo.UserId,
+                Title = createTodo.Title,
+                UserId = userId,
                 IsCompleted = false
             };
             await _context.Todos.AddAsync(entity);
             await _context.SaveChangesAsync();
-            return entity;
+            var todo = new TodoDto(entity.Id, entity.Title!, entity.IsCompleted);
+            return todo;
         }
         public async Task DeleteTodoAsync(int id)
         {
@@ -65,10 +66,11 @@ namespace FirstAPI.Services
             _context.Todos.Remove(todo);
             await _context.SaveChangesAsync();
         }
-        public async Task MakeCompleteAsync(int id, bool IsCompleted)
+        public async Task MakeCompleteAsync(int todoId, int userId, bool IsCompleted)
         {
-            var todo = await _context.Todos.FirstOrDefaultAsync(x => x.Id == id);
+            var todo = await _context.Todos.FirstOrDefaultAsync(x => x.Id == todoId);
             if(todo == null) throw new NotFoundException("Todo not found");
+            if (todo.UserId != userId) throw new Exception("Not user's todo");
             todo.IsCompleted = IsCompleted;
             await _context.SaveChangesAsync();
         }

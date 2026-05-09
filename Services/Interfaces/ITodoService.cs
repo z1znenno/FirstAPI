@@ -7,8 +7,8 @@ namespace FirstAPI.Services.Interfaces
     public interface ITodoService
     {
         Task<UserTodosDto?> GetAllUserTodosAsync(int userId);
-        Task<Todo> AddTodoAsync(CreateTodoDto todo);
+        Task<TodoDto> AddTodoAsync(CreateTodoDto createTodo, int userId);
         Task DeleteTodoAsync(int id);
-        Task MakeCompleteAsync(int id, bool IsCompleted);
+        Task MakeCompleteAsync(int todoId, int userId, bool IsCompleted);
     }
 }
