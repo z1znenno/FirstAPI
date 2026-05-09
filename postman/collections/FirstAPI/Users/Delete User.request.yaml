@@ -1,7 +1,7 @@
 ﻿$kind: http-request
 name: Delete User
 method: DELETE
-url: '{{baseUrl}}/api/user/{{userId}}'
+url: '{{baseUrl}}/api/user/'
 order: 3000
 headers:
   - key: Authorization

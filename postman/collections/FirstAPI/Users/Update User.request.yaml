@@ -1,7 +1,7 @@
 $kind: http-request
 name: Update User
 method: PUT
-url: '{{baseUrl}}/users/1'
+url: '{{baseUrl}}/users/'
 order: 4000
 headers:
   - key: Content-Type
@@ -12,8 +12,8 @@ body:
   type: json
   content: |-
     {
-      "id": 1,
       "name": "Alice Updated",
-      "age": 31
+      "age": 31,
+      "login": "aliceupdated"
     }
 description: Update an existing user by ID.

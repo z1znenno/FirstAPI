@@ -1,7 +1,7 @@
 ﻿$kind: http-request
 name: Get User by ID
 method: GET
-url: '{{baseUrl}}/api/user/{{userId}}'
+url: '{{baseUrl}}/api/user/'
 order: 1000
 headers:
   - key: Accept
