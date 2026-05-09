@@ -1,0 +1,11 @@
+$kind: http-request
+name: Get User Todos
+method: GET
+url: '{{baseUrl}}/api/todo/{{userId}}'
+order: 1000
+headers:
+  - key: Accept
+    value: application/json
+  - key: Authorization
+    value: 'Bearer {{token}}'
+description: Get all todos for a specific user by their ID.

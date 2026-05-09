@@ -1,0 +1,21 @@
+$kind: http-request
+name: Add Todo
+method: POST
+url: '{{baseUrl}}/api/todo'
+order: 2000
+headers:
+  - key: Content-Type
+    value: application/json
+  - key: Accept
+    value: application/json
+  - key: Authorization
+    value: 'Bearer {{token}}'
+body:
+  type: json
+  content: |-
+    {
+      "title": "My new task",
+      "isCompleted": false,
+      "userId": 1
+    }
+description: Create a new todo item for a user.

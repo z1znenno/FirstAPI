@@ -1,9 +1,9 @@
-$kind: http-request
+﻿$kind: http-request
 name: Delete User
 method: DELETE
-url: '{{baseUrl}}/users/1'
-order: 5000
+url: '{{baseUrl}}/api/user/{{userId}}'
+order: 3000
 headers:
-  - key: Accept
-    value: application/json
+  - key: Authorization
+    value: 'Bearer {{token}}'
 description: Delete a user by their ID.
