@@ -47,7 +47,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: MyAllowSpecificOrigins,
                     policy  =>
                         {
-                            policy.WithOrigins("http://localhost:3000", "https://todo-front-lake.vercel.app")
+                            policy.WithOrigins("http://localhost:3000", "https://todo-front-lake.vercel.app", "https://working-everyday.vercel.app")
                             .AllowAnyHeader()
                             .AllowAnyMethod();
                         });
