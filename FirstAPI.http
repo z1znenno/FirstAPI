@@ -1,6 +1,7 @@
 @FirstAPI_HostAddress = http://localhost:5114
 @FirstAPI_UserEndpoint = {{FirstAPI_HostAddress}}/api/user
 @FirstAPI_TodoEndpoint = {{FirstAPI_HostAddress}}/api/todo
+@FirstAPI_AuthEndpoint = {{FirstAPI_HostAddress}}/api/auth
 
 GET {{FirstAPI_UserEndpoint}}/
 
@@ -49,3 +50,23 @@ PATCH  {{FirstAPI_TodoEndpoint}}/2?IsComplete=true
 DELETE {{FirstAPI_TodoEndpoint}}/1
 
 ###
+
+POST {{FirstAPI_AuthEndpoint}}/register
+Content-Type: application/json
+
+{
+    "name": "Artem",
+    "age": 18,
+    "login": "Artem123",
+    "password": "password123"
+}
+
+###
+
+POST {{FirstAPI_AuthEndpoint}}/login
+Content-Type: application/json
+
+{
+    "login": "Artem123",
+    "password": "password123"
+}

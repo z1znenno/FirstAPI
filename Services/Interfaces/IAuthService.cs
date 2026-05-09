@@ -1,10 +1,10 @@
-using FirstAPI.DTOs;
+using FirstAPI.DTOs.Requests;
 
 namespace FirstAPI.Services.Interfaces
 {
     public interface IAuthService
     {
-        Task Login(LoginDto login);
-        Task Register(CreateUserDto user);
+        Task<string> Login(LoginDto login);
+        Task<string> Register(CreateUserDto user);
     }
 }

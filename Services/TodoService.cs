@@ -1,4 +1,5 @@
-using FirstAPI.DTOs;
+using FirstAPI.DTOs.Responses;
+using FirstAPI.DTOs.Requests;
 using FirstAPI.Models;
 using FirstAPI.Data;
 using Microsoft.EntityFrameworkCore;
@@ -23,10 +24,11 @@ namespace FirstAPI.Services
             {
                 UserName = u.Name,
                 Todos = u.Todos.Select(t => new TodoDto
-                {
-                    Title = t.Title,
-                    IsCompleted = t.IsCompleted
-                }).ToList()
+                (
+                    id : t.Id,
+                    title : t.Title!,
+                    isComplete : t.IsCompleted
+                )).ToList()
             }
             ).FirstOrDefaultAsync();
             

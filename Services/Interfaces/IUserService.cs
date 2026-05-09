@@ -1,13 +1,14 @@
-using FirstAPI.DTOs;
-using FirstAPI.Models;
+using FirstAPI.DTOs.Responses;
+using FirstAPI.DTOs.Requests;
 
 namespace FirstAPI.Services.Interfaces
 {
     public interface IUserService
     {
-        Task<User> GetByIdAsync(int id);
-        Task<CreateUserDto> AddAsync(CreateUserDto user);
+        Task<UserResponseDto> GetByIdAsync(int id);
+        Task<UserDto> GetByLoginAsync(string login);
+        Task<UserDto> AddAsync(CreateUserDto user);
         Task DeleteAsync(int id);
-        Task ChangeUserData(int id, string name, int age);
+        Task ChangeUserData(int id, string name, int age, string login);
     }
 }

@@ -1,5 +1,6 @@
 using FirstAPI.Models;
-using FirstAPI.DTOs;
+using FirstAPI.DTOs.Requests;
+using FirstAPI.DTOs.Responses;
 
 namespace FirstAPI.Services.Interfaces
 {

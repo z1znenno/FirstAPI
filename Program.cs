@@ -17,6 +17,7 @@ builder.Services.AddControllers();
 builder.Services.AddScoped<IUserService, UserDbService>();
 builder.Services.AddScoped<ITodoService, TodoService>();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddSingleton<JwtTokenGenerator>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(
     options => 
     options.TokenValidationParameters = new TokenValidationParameters()
@@ -38,6 +39,7 @@ builder.Services.AddDbContext<AppDbContext>
     option => 
     option.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString))
 );
+
 
 var app = builder.Build();
 
